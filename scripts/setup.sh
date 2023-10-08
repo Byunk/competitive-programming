@@ -31,6 +31,10 @@ readme_name="README.md"
 mkdir -p "$dir_name"
 cp "$SCRIPT_PATH/template/sample.cpp" "$dir_name/$file_name" # TODO: add options
 touch "$dir_name/$readme_name"
+cat > "$dir_name/$readme_name" << EOF
+# Note
+
+EOF
 echo "$platform/$problem_id is created"
 
 # TODO: crawl input.txt from problem description
