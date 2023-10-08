@@ -1,0 +1,6 @@
+[submodule "baekjoon"]
+	path = baekjoon
+	url = https://github.com/Byunk/Baekjoon
+[submodule "Leetcode"]
+	path = Leetcode
+	url = https://github.com/Byunk/LeetCode

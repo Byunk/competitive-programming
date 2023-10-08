@@ -7,13 +7,13 @@ BAEKJOON_BASE_URL="acmicpc.net"
 ALGOSPOT_BASE_URL="algospot.com"
 
 if [[ "$1" == *"$LEETCODE_BASE_URL"* ]]; then
-	platform="leetcode"
+	platform="Leetcode"
 	problem_id=$(echo "$1" | grep -oE 'problems/([^/]+)' | sed -e 's/problems\///' -e 's/\///')
 elif [[ "$1" == *"$BAEKJOON_BASE_URL"* ]]; then
-	platform="baekjoon"
+	platform="Baekjoon"
 	problem_id=$(echo "$1" | grep -oE 'problem/([0-9]+)' | sed -e 's/problem\///' -e 's/\///')
 elif [[ "$1" == *"$ALGOSPOT_BASE_URL"* ]]; then
-	platform="algospot"
+	platform="Algospot"
 	problem_id=$(echo "$1" | grep -oE 'problem/read/([^/]+)' | sed -e 's/problem\/read\///' -e 's/\///')
 else
 	echo "ERROR: Invalid URL"
@@ -27,14 +27,17 @@ popd > /dev/null
 
 dir_name="$SCRIPT_PATH/../$platform/$problem_id"
 file_name="$problem_id.cpp" # TODO: add options
-readme_name="README.md"
+
 mkdir -p "$dir_name"
 cp "$SCRIPT_PATH/template/sample.cpp" "$dir_name/$file_name" # TODO: add options
-touch "$dir_name/$readme_name"
-cat > "$dir_name/$readme_name" << EOF
+
+cat > "$dir_name/README.md" << EOF
 # Note
 
 EOF
+
+touch "$dir_name/input.txt"
+
 echo "$platform/$problem_id is created"
 
 # TODO: crawl input.txt from problem description
